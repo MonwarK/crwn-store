@@ -14,8 +14,12 @@ function App() {
 
   useEffect(() => {
     const unsubscribe = () => {
-      onAuthStateChanged(auth, async (userAuth) => {
-        const q = query(doc(db, "users", userAuth.uid))
+      onAuthStateChanged(auth, (userAuth) => {
+        if (!userAuth) {
+          setUser(null); 
+          return;
+        }
+        const q = query(doc(db, "users", userAuth.uid));
         createUserProfileDocument(userAuth);
         
         onSnapshot(q, (snapshot) => {
@@ -24,16 +28,16 @@ function App() {
             ...snapshot.data()
           });
         })
-
       })
     }
     
     return unsubscribe;
-  }, [])
+  }, [auth])
   
   return (
     <div className="overflow-hidden bg-gray-100 flex flex-col min-h-screen">
       <Header user={user} />
+      {console.log(user)}
       <div className="px-10 flex-1">
         <Routes>
           <Route path="/" element={<HomePage />} />

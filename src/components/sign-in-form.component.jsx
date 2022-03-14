@@ -1,33 +1,55 @@
+import { signInWithEmailAndPassword } from 'firebase/auth'
 import React from 'react'
-import { signInWithGoogle } from '../utilities/firebase.utils'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { auth, signInWithGoogle } from '../utilities/firebase.utils'
 import Button from './button.component'
 import FormInput from './form-input.component'
 
 function SignInForm() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("")
+  const navigate = useNavigate();
+
+  const login = () => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => navigate("/"))
+      .catch((err) => console.log(err))
+  }
+
+  const loginGoogle = () => {
+    signInWithGoogle()
+      .then(() => navigate("/"))
+  }
+
   return (
-    <div>
+    <form className='max-w-lg mx-auto w-full' onSubmit={(e) => e.preventDefault()}>
       <h1 className='text-3xl font-medium'>I already have an account</h1>
       <p className='text-lg my-5'>Sign in with your email and password</p>
       <FormInput 
+        onChange={(e) => setEmail(e.target.value)}
         type="email"
-        placeholder="email"
+        placeholder="Email"
+        value={email}
       />
       <FormInput 
+        onChange={(e) => setPassword(e.target.value)}
         type="password"
-        placeholder="password"
+        placeholder="Password"
+        value={password}
       />
       <div className='space-x-5'>
-        <Button>
+        <Button onClick={login}>
           Sign In
         </Button>
         <Button 
-          onClick={signInWithGoogle}
+          onClick={loginGoogle}
           type="secondary"
         >
           Sign In With Google
         </Button>
       </div>
-    </div>
+    </form>
   )
 }
 
