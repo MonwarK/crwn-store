@@ -1,4 +1,5 @@
 import { onAuthStateChanged } from "firebase/auth";
+import { doc, onSnapshot, query } from "firebase/firestore";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
@@ -6,18 +7,27 @@ import Header from "./components/header.component";
 import AuthenticationPage from "./pages/authenticationpage.component";
 import HomePage from "./pages/homepage.component";
 import ShopPage from "./pages/shoppage.component";
-import { auth } from "./utilities/firebase.utils";
+import { auth, createUserProfileDocument, db } from "./utilities/firebase.utils";
 
 function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     const unsubscribe = () => {
-      onAuthStateChanged(auth, (userAuth) => {
-        setUser(userAuth);
+      onAuthStateChanged(auth, async (userAuth) => {
+        const q = query(doc(db, "users", userAuth.uid))
+        createUserProfileDocument(userAuth);
+        
+        onSnapshot(q, (snapshot) => {
+          setUser({
+            id: snapshot.id,
+            ...snapshot.data()
+          });
+        })
+
       })
     }
-
+    
     return unsubscribe;
   }, [])
   
