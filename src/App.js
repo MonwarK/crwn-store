@@ -36,7 +36,7 @@ function App() {
     }
     
     return unsubscribe;
-  }, [])
+  }, [auth])
   
   return (
     <div className="overflow-hidden bg-gray-100 flex flex-col min-h-screen">

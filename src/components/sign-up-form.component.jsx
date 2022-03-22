@@ -54,9 +54,11 @@ function SignUpForm() {
         placeholder="Confirm Password"
         value={confirmPassword}
       />
-      <Button onClick={signUp}>
-        Register
-      </Button>
+      <div className='w-fit'>
+        <Button onClick={signUp}>
+          Register
+        </Button>
+      </div>
     </form>
   )
 }

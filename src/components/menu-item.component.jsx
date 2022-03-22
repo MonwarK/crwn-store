@@ -1,8 +1,14 @@
 import React from 'react'
+import { useNavigate,  } from 'react-router-dom'
 
-function MenuItem({ title, image, size }) {
+function MenuItem({ title, categoryId, image, size }) {
+  const navigate = useNavigate();
+
   return (
-    <div className={`${size === "large" ? "md:w-1/2" : "md:w-1/3"} w-full duration-500 h-80 p-2`}>      
+    <div 
+      onClick={() => navigate(`/shop/${categoryId}`)}
+      className={`${size === "large" ? "md:w-1/2" : "md:w-1/3"} w-full duration-500 h-80 p-2`}
+    >      
       <div className="w-full h-full grid place-items-center shadow-lg border relative cursor-pointer group hover:z-10 overflow-hidden">
         <img 
           className='w-full h-full absolute z-0 brightness-75 object-cover group-hover:scale-110 duration-700'

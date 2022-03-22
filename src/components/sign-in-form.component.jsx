@@ -38,16 +38,20 @@ function SignInForm() {
         placeholder="Password"
         value={password}
       />
-      <div className='space-x-5'>
-        <Button onClick={login}>
-          Sign In
-        </Button>
-        <Button 
-          onClick={loginGoogle}
-          type="secondary"
-        >
-          Sign In With Google
-        </Button>
+      <div className='space-x-5 flex'>
+        <div className='w-fit'>
+          <Button onClick={login}>
+            Sign In
+          </Button>
+        </div>
+        <div className='w-fit'>
+          <Button 
+            onClick={loginGoogle}
+            type="secondary"
+          >
+            Sign In With Google
+          </Button>
+        </div>
       </div>
     </form>
   )

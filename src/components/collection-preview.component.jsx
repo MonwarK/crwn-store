@@ -18,6 +18,8 @@ function CollectionPreview({ id, title, products }) {
             imageUrl={product.imageUrl}
           />
         ))}
+      </div>
+      <div className='my-5'>
         <Button onClick={() => navigate(`${id}`)}>
           Show More
         </Button>

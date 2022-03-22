@@ -1,6 +1,7 @@
 import React from 'react'
 import { useRecoilValue } from 'recoil'
 import { cartAtom } from '../atoms/cart.atom'
+import Button from './button.component';
 import CartItem from './cart-item.component'
 
 function CartDropDown() {
@@ -19,6 +20,9 @@ function CartDropDown() {
             quantity={item.quantity}
           />
         ))}
+        <Button>
+          Go to Checkout
+        </Button>
       </div>
     </div>
   )

@@ -25,7 +25,7 @@ function CollectionItem({title, price, imageUrl}) {
   
   return (
     <div className='cursor-pointer'>
-      <div className='w-full h-80 relative group'>
+      <div className='w-full h-[500px] relative group'>
         <img
           className='w-full h-full object-cover'
           src={imageUrl}

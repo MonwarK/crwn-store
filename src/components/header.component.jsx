@@ -14,7 +14,7 @@ function Header({ user }) {
   return (
     <header className='mb-5 flex items-center justify-between uppercase px-10 py-5 shadow-lg bg-white'>
       <Link to="/">
-        <Logo />
+        <Logo className='hover:animate-pulse' />
       </Link>
 
       <div className='flex items-center space-x-5'>

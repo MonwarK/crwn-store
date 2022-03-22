@@ -9,13 +9,13 @@ function HomePage() {
       id: 1
     },
     {
-      title: 'jackets',
-      imageUrl: 'https://i.ibb.co/px2tCc3/jackets.png',
+      title: 'sneakers',
+      imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
       id: 2
     },
     {
-      title: 'sneakers',
-      imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
+      title: 'jackets',
+      imageUrl: 'https://i.ibb.co/px2tCc3/jackets.png',
       id: 3
     },
     {
@@ -38,6 +38,7 @@ function HomePage() {
         {sections.map(item => (
           <MenuItem 
             key={item.id}
+            categoryId={item.id}
             title={item.title}
             image={item.imageUrl}
             size={item.size}

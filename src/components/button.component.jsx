@@ -8,7 +8,7 @@ function Button({ type="primary", children, ...props }) {
 
   return (
     <button 
-      className={`${theme[type]} text-white duration-200 px-5 py-3 uppercase`}
+      className={`${theme[type]} text-white duration-200 px-5 py-3 uppercase w-full`}
       {...props}
     >
       {children}
