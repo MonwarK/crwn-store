@@ -8,7 +8,7 @@ function CollectionItem(product) {
   
   return (
     <div className='cursor-pointer'>
-      <div className='w-full h-[500px] relative group'>
+      <div className='w-full h-72 relative group'>
         <img
           className='w-full h-full object-cover'
           src={imageUrl}

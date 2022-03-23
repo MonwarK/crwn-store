@@ -25,7 +25,7 @@ function CheckoutList() {
         <div className='grid grid-cols-5 items-center text-center text-lg py-5 border-b'>
           <div>
             <img 
-              className='w-28 mx-auto rounded-md'
+              className='w-28 h-28 object-cover mx-auto rounded-md'
               src={item.imageUrl} 
               alt={item.title} 
             />

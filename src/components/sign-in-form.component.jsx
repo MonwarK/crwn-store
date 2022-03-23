@@ -47,7 +47,7 @@ function SignInForm() {
         <div className='w-fit'>
           <Button 
             onClick={loginGoogle}
-            type="secondary"
+            color="secondary"
           >
             Sign In With Google
           </Button>

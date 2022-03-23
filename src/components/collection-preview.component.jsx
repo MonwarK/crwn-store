@@ -19,7 +19,7 @@ function CollectionPreview({ id, title, products }) {
           />
         ))}
       </div>
-      <div className='my-5'>
+      <div className='my-5 w-fit'>
         <Button onClick={() => navigate(`${id}`)}>
           Show More
         </Button>

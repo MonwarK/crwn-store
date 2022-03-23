@@ -12,7 +12,8 @@ import AuthenticationPage from "./pages/authentication-page.component";
 import CheckoutPage from "./pages/checkout-page.component";
 import HomePage from "./pages/home-page.component";
 import ShopPage from "./pages/shop-page.component";
-import { auth, createUserProfileDocument, db } from "./utilities/firebase.utils";
+import { auth } from "./utilities/firebase.utils";
+import ContactPage from "./pages/contact-page.component";
 
 function App() {
   const isCartHidden = useRecoilValue(cartHiddenAtom);
@@ -21,24 +22,12 @@ function App() {
   useEffect(() => {
     const unsubscribe = () => {
       onAuthStateChanged(auth, (userAuth) => {
-        if (!userAuth) {
-          setUser(null); 
-          return;
-        }
-        const q = query(doc(db, "users", userAuth.uid));
-        createUserProfileDocument(userAuth);
-        
-        onSnapshot(q, (snapshot) => {
-          setUser({
-            id: snapshot.id,
-            ...snapshot.data()
-          });
-        })
+        setUser(userAuth); 
       })
     }
     
     return unsubscribe;
-  }, [auth])
+  }, [])
   
   return (
     <CartContextProvider>
@@ -49,6 +38,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/shop/*" element={<ShopPage />} />
+            <Route path="/contact" element={<ContactPage />} />
             <Route path="/signin" element={<AuthenticationPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
           </Routes>
