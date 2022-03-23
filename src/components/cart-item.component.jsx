@@ -1,16 +1,10 @@
 import { TrashIcon } from '@heroicons/react/outline'
 import React from 'react'
-import { useRecoilState } from 'recoil'
-import { cartAtom } from '../atoms/cart.atom'
+import { useContext } from 'react'
+import { CartContext } from '../context/cart.context'
 
 function CartItem({ title, price, imageUrl, quantity }) {
-  const [cart, setCart] = useRecoilState(cartAtom)
-  
-  const removeItem = () => {
-    setCart(
-      cart.filter(x => x.title !== title)
-    )
-  }
+  const { removeItem } = useContext(CartContext);
 
   return (
     <div className='py-2 flex items-center'>
@@ -27,7 +21,7 @@ function CartItem({ title, price, imageUrl, quantity }) {
         <p>${price}</p>
       </div>
       <TrashIcon 
-        onClick={removeItem}
+        onClick={() => removeItem(title)}
         className='cursor-pointer' 
         height={20} 
       />
