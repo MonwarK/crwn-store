@@ -14,7 +14,7 @@ function CheckoutList() {
 
   return (
     <div>
-      <div className='grid grid-cols-5 text-center text-lg py-5 border-b'>
+      <div className='grid grid-cols-5 text-center text-sm md:text-lg py-5 border-b'>
         <h2>Product</h2>
         <h2>Descriptions</h2>
         <h2>Quantity</h2>
@@ -55,12 +55,12 @@ function CheckoutList() {
           </div>
         </div>
       ))}
-      <div className='flex justify-between items-center'>
-        <div className='text-red-600 text-2xl'>
+      <div className='grid grid-cols-2 items-center md:text-xl'>
+        <div className='text-red-600'>
           <p>*Please use the following test credit card for payments*</p>
           <p>4242 4242 4242 4242 - Exp: 4/24 - CW: 424</p>
         </div>
-        <p className='text-3xl text-right my-5'>Total: ${totalPrice}</p>
+        <p className='text-right'>Total: ${totalPrice}</p>
       </div>
       <div className='w-fit ml-auto mt-5'>
         <StripeCheckoutButton price={totalPrice} />

@@ -1,5 +1,4 @@
 import { onAuthStateChanged } from "firebase/auth";
-import { doc, onSnapshot, query } from "firebase/firestore";
 import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
@@ -20,18 +19,16 @@ function App() {
   const [user, setUser] = useRecoilState(userAtom);
 
   useEffect(() => {
-    const unsubscribe = () => {
-      onAuthStateChanged(auth, (userAuth) => {
-        setUser(userAuth); 
-      })
-    }
+    const unsubscribe = onAuthStateChanged(auth, (userAuth) => {
+      setUser(userAuth); 
+    })
     
     return unsubscribe;
-  }, [])
+  }, [auth])
   
   return (
     <CartContextProvider>
-      <div className="overflow-hidden bg-gray-100 flex flex-col min-h-screen">
+      <div className="overflow-hidden bg-gray-100 flex flex-col min-h-screen pb-5">
         <Header user={user} />
         {!isCartHidden && <CartDropDown />}
         <div className="px-10 flex-1">

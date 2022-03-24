@@ -25,9 +25,9 @@ function Header({ user }) {
           Contact
         </Link>
         {user ? (
-          <div onClick={() => signOut(auth)} className='cursor-pointer hover:underline'>
+          <button onClick={() => signOut(auth)} className='cursor-pointer uppercase hover:underline'>
             Sign Out
-          </div>
+          </button>
         ) : (
           <Link className='hover:underline' to="/signin">
             Sign In
